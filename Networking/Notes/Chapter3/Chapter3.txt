@@ -1,0 +1,79 @@
+Media Types
+-Coaxial Cable
+--Two Conductors
+---Centre Conductor
+---Dielectric Insulator Between the two
+---Foil Shield
+--Used mostly as a media for cable modems today
+--Two Common Connectors
+---BNC (Bayonet Neil-Concealman)
+---F-Connector
+-Twisted Pair Cable
+--Shielded Twisted Pair
+---Metallic shielding similar to coaxial cable to help prevent EMI reception or transmission
+---More costly due to shielding
+---Used in environments that may be susceptible to electrical currents
+--Unshielded Twisted Pair
+---Pair strands wrapped more tightly (more twists per centimeter) and the wires insulate each other from EMI
+---Less expensive than STP
+---Three Connector Types
+----RJ-45 (Ethernet Cables)
+----RJ-11 (Telephones)
+----DB-9 (Serial computer connections)
+-Fiber-Optic Cable
+--Uses light instead of electricity
+--Immune to EMI
+--Greater range than copper
+--Greater data-carrying capacity
+--Two Modes
+---Multimode Fiber(MMF)
+----Two strands of glass: and inner core surrounded by an outer cladding of a different type of glass
+---Single-Mode Fiber(SMF)
+----Inner core has a diameter so small that only one mode or one path of propagation is permitted
+---SMF costs more to manufacture than MMF but can be used over a greater distance
+--Path of light pulse is called the Mode of Propogation and can represent the value of a bit
+--Connector Types
+---ST-ST
+---SC-SC
+---LC-LC
+---MT-RJ - MT-RJ
+-Wireless Technologies
+
+Terminology
+-Passive (does not amplify incoming bits)
+-Active (regenerates incoming bits)
+-Smart
+-ARP - Address Request Protocol
+
+
+Network Infrastructure Devices
+-Hubs
+--Layer 1
+--Passive
+-Bridges
+--Layer 2
+--Join two or more LAN devices
+--Replaced by switches
+-Switches
+--Layer 2
+--Dynamically learns the MAC addresses of attached devices to populate its address table
+-Routers
+--Layer 3 (forwarding decisions based on IP address)
+--Capable of considering higher-level layer parameters
+--Normally has a broader range of interface types than a multilayer switch
+
+Learn These:
+-Dynamic Host Configuration Protocol (DHCP)
+-Firewall Appliances
+-Proxy Servers
+-Virtual Private Network (VPN)
+-Voice Over IP Protocols (VoIP)
+-Domain Name System (DNS)
+
+Ethernet Technology
+-Collision Domains
+--associated with Ethernet hubs and bridges or any type ethernet segment
+--The greater the number of devices in a collision domain the higher the chance for collisions to occur.
+--Collisions were alleviated somewhat by using the *carrier sense multiple access collision detect* procedure
+-Broadcast Domains
+--Range of a device's broadcast

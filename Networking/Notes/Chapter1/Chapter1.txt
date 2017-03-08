@@ -1,0 +1,49 @@
+Network Fundamentals
+-Purpose: make a connection between one or more devices
+-Value: traffic in a network
+-Applications can be of various types, creating a converged network
+
+Network Components
+-Client: The device an end user uses to access the network
+-Server: serves up resources to the network
+-Hub: Older technology that provides connection ports for network devices
+-Switch: Performs like an intelligent hub. It takes traffic in on one port and sends it out to the appropriate port(Uses learned MAC Addresses)
+-Router: An intelligent device that forwards traffic to the appropriate interface based on logical network address(IP addressing)
+-Media: The means for making the connectivity between the devices(Actual path for signal transmission)
+
+Network Geographies
+-Local Area Network(LAN)
+--Interconnects network components with in a local area such as a building
+-Wide Area Network(WAN)
+-Campus Area Network(CAN)
+--Interconnected LANs located in buildings across the enterprise site
+-Metropolitan Area Network(MAN)
+--More Widespread than a CAN and not as widespread as a WAN
+-Home Area Network(HAN)
+--A network in home that connects devices for productivity, entertainment, etc.
+-Personal Area Network(PAN)
+--Range typically limited to a few meters
+
+Network Topologies
+-Topology refers to the layout of a network and how different devices in a network are connected to each other
+
+-Bus Topology
+--One long cable that devices tap into for connection
+---requires splitters
+-Ring Topology
+--Traffic flows in a circular fashion around a closed network loop
+---each device accesses the information until the information reaches the correct device
+-Star Topology
+--Physical LAN topology in use today with an ethernet switch at the center and a UTP cable connection to each client
+---Most Popular
+-Hub-And-Spoke Topology
+--Used for connecting remote sites(spokes) to a main site(hub) with WAN links
+-Full-Mesh Topology
+--Directly connects every site to every other site with WAN links.
+--Number of node links has the formula n(n-1)/2
+-Partial-Mesh Topology
+--A hybrid of the HAS and the Full-Mesh. WAN links support the traffic volume between sites
+
+Networks by Resource Location
+-Peer-To-Peer
+--each device connects to another device and shares files directly

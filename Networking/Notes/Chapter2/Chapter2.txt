@@ -1,0 +1,68 @@
+Network Protocols
+-Devices can all share data as long as they all speak the same language, or protocol
+-Protocol: A set of rules, or an agreement, that determines the format and the transmission of data
+--Internet Protocol: the "language" the internet speaks
+---The internet actually uses a group, or suite, of protocols called the TCP/IP
+
+Standardization
+-To assess the problem of standardization, the Organization for Standardization(ISO) researched the leading network schemes:
+--Digital's DECnet
+--IBM's SNA
+--DoD's TCP/IP(non-proprietary)
+-The ISO recognized there was a need to create a network model that would help vendors create a modernized network
+
+OSI Reference Model
+-A Layered Model
+--Application
+---Network processes to applications
+--Presentation
+---Data representation
+--Session
+---Interhost communication
+--Transport
+---End-to-End connections
+--Network
+---Addresses and best path
+--Data Link
+---Access to media
+--Physical
+---Binary Transmission
+
+Host Layers
+-Provide accurate transport to the user
+--Application
+--Presentation
+--Session
+--Transport
+
+Media Layers
+-These control physical delivery of messages over the network.
+--Network
+--Data Link
+--Physical
+
+-Open System Interconnection
+--Reduces Complexity
+--Standardizes Interfaces
+--Facilitates modular engineering
+--Ensures interoperable technology
+--Accelerates evolution
+--Simplifies teaching and learning
+
+Data Encapsulation
+-A packaging system to keep information data together while in transfer
+--Transport packages into a Segment Header, creating a Segment
+--Network adds a Network Header, creating a Packet
+--Data Link adds a Frame Header and a Frame Trailer, creating a Frame
+--Physical transfers information
+
+TCP/IP Model
+-Application
+-Transport
+-Network
+-Host to Network
+
+Windowing
+-Window Size
+--How many segments can be sent in one transfer
+--Determined by a try-test acknowledgement between sender and receiver
