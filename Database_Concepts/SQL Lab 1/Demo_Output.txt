@@ -1,0 +1,292 @@
+Table VENDOR created.
+
+Error starting at line : 11 in command -
+CREATE TABLE PRODUCT (
+  P_CODE VARCHAR2(19(,
+  P_DESCRIPT VARCHAR2(35) NOT NULL,
+  P_INDATE DATE NOT NULL,
+  P_QOH SMALLINT NOT NULL,
+  P_MIN SMALLINT NOT NULL,
+  P_PRICE NUMBER(8,2) NOT NULL,
+  P_DISCOUNT NUMBER(5,2) NOT NULL,
+  V_CODE INTEGER,
+PRIMARY KEY(P_CODE),
+FOREIGN KEY (V_CODE) REFERENCES VENDOR
+)
+Error report -
+SQL Error: ORA-00907: missing right parenthesis
+00907. 00000 -  "missing right parenthesis"
+*Cause:    
+*Action:
+Error starting at line : 1 in command -
+CREATE TABLE VENDOR(
+  V_CODE INTEGER,
+  V_NAME VARCHAR2(35) NOT NULL,
+  V_CONTACT VARCHAR2(15) NOT NULL,
+  V_AREACODE CHAR(3) NOT NULL,
+  V_PHONE CHAR(8) NOT NULL,
+  V_STATE CHAR(2) NOT NULL,
+  V_ORDER CHAR(1) NOT NULL,
+PRIMARY KEY(V_CODE)
+)
+Error report -
+SQL Error: ORA-00955: name is already used by an existing object
+00955. 00000 -  "name is already used by an existing object"
+*Cause:    
+*Action:
+
+Table PRODUCT created.
+
+SQL> Prompt Creating Oracle Demonstration Tables for...
+Creating Oracle Demonstration Tables for...
+SQL> select substr (user,1,20) User_Id,
+sysdate Sys_Date,
+substr (to_char(sysdate, 'HH:MIAM'),1,10) Sys_Time from dual;
+
+USER_ID              SYS_DATE  SYS_TIM
+-------------------- --------- -------
+CLJUSTICE            26-MAR-17 11:58PM
+
+SQL> DROP TABLE DEMO_EMP;
+
+Error starting at line : 10 in command -
+DROP TABLE DEMO_EMP
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> DROP TABLE DEMO_DEPT;
+
+Error starting at line : 11 in command -
+DROP TABLE DEMO_DEPT
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> DROP TABLE DEMO_CUSTOMER;
+
+Error starting at line : 12 in command -
+DROP TABLE DEMO_CUSTOMER
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+SQL> DROP SEQUENCE CUSTID;
+
+Error starting at line : 14 in command -
+DROP SEQUENCE CUSTID
+Error report -
+SQL Error: ORA-02289: sequence does not exist
+02289. 00000 -  "sequence does not exist"
+*Cause:    The specified sequence does not exist, or the user does
+           not have the required privilege to perform this operation.
+*Action:   Make sure the sequence name is correct, and that you have
+           the right to perform the desired operation on this sequence.
+SQL> CREATE TABLE DEMO_DEPT (
+ DEPTNO              NUMBER(2) NOT NULL,
+ DNAME               VARCHAR2(14),
+ LOC                 VARCHAR2(13),
+ CONSTRAINT DEMO_DEPT_PRIMARY_KEY PRIMARY KEY (DEPTNO));
+
+Table DEMO_DEPT created.
+
+SQL> INSERT INTO DEMO_DEPT VALUES (10,'ACCOUNTING','NEW YORK');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_DEPT VALUES (20,'RESEARCH','DALLAS');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_DEPT VALUES (30,'SALES','CHICAGO');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_DEPT VALUES (40,'OPERATIONS','BOSTON');
+
+1 row inserted.
+
+SQL> CREATE TABLE DEMO_EMP (
+ EMPNO               NUMBER(4) NOT NULL,
+ ENAME               VARCHAR2(10),
+ JOB                 VARCHAR2(9),
+ MGR                 NUMBER(4) CONSTRAINT DEMO_EMP_SELF_KEY REFERENCES DEMO_EMP (EMPNO),
+ HIREDATE            DATE,
+ SAL                 NUMBER(7,2),
+ COMM                NUMBER(7,2),
+ DEPTNO              NUMBER(2) NOT NULL,
+ CONSTRAINT DEMO_EMP_FOREIGN_KEY FOREIGN KEY (DEPTNO) REFERENCES DEMO_DEPT (DEPTNO),
+ CONSTRAINT DEMO_EMP_PRIMARY_KEY PRIMARY KEY (EMPNO));
+
+Table DEMO_EMP created.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7839,'KING','PRESIDENT',NULL,'17-NOV-2001',5000,NULL,10);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7698,'BLAKE','MANAGER',7839,'1-MAY-2001',2850,NULL,30);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7782,'CLARK','MANAGER',7839,'9-JUN-2001',2450,NULL,10);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7566,'JONES','MANAGER',7839,'2-APR-2001',2975,NULL,20);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7654,'MARTIN','SALESMAN',7698,'28-SEP-2001',1250,1400,30);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7499,'ALLEN','SALESMAN',7698,'20-FEB-2001',1600,300,30);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7844,'TURNER','SALESMAN',7698,'8-SEP-2001',1500,0,30);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7900,'JAMES','CLERK',7698,'3-DEC-2001',950,NULL,30);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7521,'WARD','SALESMAN',7698,'22-FEB-2001',1250,500,30);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7902,'FORD','ANALYST',7566,'3-DEC-2001',3000,NULL,20);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7369,'SMITH','CLERK',7902,'17-DEC-2000',800,NULL,20);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7788,'SCOTT','ANALYST',7566,'09-DEC-2002',3000,NULL,20);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7876,'ADAMS','CLERK',7788,'12-JAN-2003',1100,NULL,20);
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_EMP VALUES (7934,'MILLER','CLERK',7782,'23-JAN-2002',1300,NULL,10);
+
+1 row inserted.
+
+SQL> CREATE TABLE DEMO_CUSTOMER (
+ CUSTID              NUMBER (6) NOT NULL,
+ NAME                VARCHAR2(45),
+ ADDRESS             VARCHAR2(40),
+ CITY                VARCHAR2(30),
+ STATE               VARCHAR2(2),
+ ZIP                 VARCHAR2(9),
+ AREA                NUMBER (3),
+ PHONE               VARCHAR2(9),
+ REPID               NUMBER (4) NOT NULL,
+ CREDITLIMIT         NUMBER (9,2),
+ COMMENTS            LONG,
+ CONSTRAINT DEMO_CUSTOMER_PRIMARY_KEY PRIMARY KEY (CUSTID),
+ CONSTRAINT CUSTID_ZERO CHECK (CUSTID > 0));
+
+Table DEMO_CUSTOMER created.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('96711', 'CA', '7844', '598-6609',
+ 'JOCKSPORTS',
+ '100', '5000', 'BELMONT', '415', '345 VIEWRIDGE',
+ 'Very friendly people to work with -- sales rep likes to be called Mike.');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('94061', 'CA', '7521', '368-1223',
+ 'TKB SPORT SHOP',
+ '101', '10000', 'REDWOOD CITY', '415', '490 BOLI RD.',
+ 'Rep called 5/8 about change in order - contact shipping.');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('95133', 'CA', '7654', '644-3341',
+ 'VOLLYRITE',
+ '102', '7000', 'BURLINGAME', '415', '9722 HAMILTON',
+ 'Company doing heavy promotion beginning 10/89. Prepare for large orders during
+ winter.');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('97544', 'CA', '7521', '677-9312',
+ 'JUST TENNIS',
+ '103', '3000', 'BURLINGAME', '415', 'HILLVIEW MALL',
+ 'Contact rep about new line of tennis rackets.');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('93301', 'CA', '7499', '996-2323',
+ 'EVERY MOUNTAIN',
+ '104', '10000', 'CUPERTINO', '408', '574 SURRY RD.',
+ 'Customer with high market share (23%) due to aggressive advertising.');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('91003', 'CA', '7844', '376-9966',
+ 'K + T SPORTS',
+ '105', '5000', 'SANTA CLARA', '408', '3476 EL PASEO',
+ 'Tends to order large amounts of merchandise at once. Accounting is considering
+ raising their credit limit. Usually pays on time.');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('94301', 'CA', '7521', '364-9777',
+ 'SHAPE UP',
+ '106', '6000', 'PALO ALTO', '415', '908 SEQUOIA',
+ 'Support intensive. Orders small amounts (< 800) of merchandise at a time.');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('93301', 'CA', '7499', '967-4398',
+ 'WOMENS SPORTS',
+ '107', '10000', 'SUNNYVALE', '408', 'VALCO VILLAGE',
+ 'First sporting goods store geared exclusively towards women. Unusual promotion
+al style and very willing to take chances towards new products!');
+
+1 row inserted.
+
+SQL> INSERT INTO DEMO_CUSTOMER (ZIP, STATE, REPID, PHONE, NAME, CUSTID, CREDITLIMIT,
+  CITY, AREA, ADDRESS, COMMENTS)
+VALUES ('55649', 'MN', '7844', '566-9123',
+ 'NORTH WOODS HEALTH AND FITNESS SUPPLY CENTER',
+ '108', '8000', 'HIBBING', '612', '98 LONE PINE WAY', '');
+
+1 row inserted.
+
+SQL> CREATE SEQUENCE CUSTID
+INCREMENT BY 1
+START WITH 109
+NOCACHE;
+
+Sequence CUSTID created.
+
+SQL> COMMIT;
+
+Commit complete.
+

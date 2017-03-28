@@ -27,11 +27,11 @@ public class DriverExam {
     private List<Integer> correctQuestions = new LinkedList<Integer>();
     private List<Integer> incorrectQuestions = new LinkedList<Integer>();
     
-    private Validation.Input inputValidator;
+    private Validation.TestAnswerValidation inputValidator;
     
     //Loops throgh NUMBER_OF_QUESTIONS times and gets an answer for each
     public List<Character> getUserAnswers(){
-        inputValidator = new Validation.Input();
+        inputValidator = new Validation.TestAnswerValidation();
         for(int i = 0; i < NUMBER_OF_QUESTIONS; i++){
             userAnswers.add(inputValidator.getValidTestAnswer(
                     "Answer to question #" + (i+1)));

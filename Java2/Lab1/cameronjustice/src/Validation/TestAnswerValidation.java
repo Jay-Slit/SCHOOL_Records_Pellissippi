@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Input {
+public class TestAnswerValidation {
     
     private Scanner input;
     private List<Character> validAnswers = new ArrayList<>();
     
-    public Input(){
+    public TestAnswerValidation(){
         input = new Scanner(System.in);
         validAnswers.add('a');
         validAnswers.add('b');
