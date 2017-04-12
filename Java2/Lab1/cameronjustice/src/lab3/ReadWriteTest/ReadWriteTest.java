@@ -24,10 +24,17 @@ public class ReadWriteTest {
     private static File file = new File("src/lab3/ReadWriteTest/MyFile.txt");
     private static List<Integer> randNums = new ArrayList<Integer>();
     
-    public static void main(String[] args){        
+    public static void main(String[] args) throws InterruptedException{        
         int[] printArray;
         
+        System.out.println("This program is made to read a list "
+                + "of numbers from a file. If this is your first time "
+                + "running this program, I will create the file for you.");
+        Thread.sleep(2000);
+        
         createFile();
+        System.out.println("Checking OR Creating file...");
+        Thread.sleep(1000);
         if(filePrevExists){
             readNumbersFromFile();
             printArray = new int[randNums.size()];
@@ -48,6 +55,8 @@ public class ReadWriteTest {
             insertionSort(printArray);
         }
         
+        System.out.println("Printing Numbers");
+        Thread.sleep(1000);
         for(int i = 0; i < printArray.length; i++){
             System.out.println(printArray[i]);
         }
