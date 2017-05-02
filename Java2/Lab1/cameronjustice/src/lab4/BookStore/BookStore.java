@@ -1,77 +1,58 @@
 /*
  * File: BookStore
  * Author: Cameron Justice
- * Date: Apr 11, 2017
+ * Date: Apr 18, 2017
  * Summary:
 */
 package lab4.BookStore;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lab4.BookStore.BookParseControl;
 
-public class BookStore extends Application {
-    
-    
-    public static void main(String[] args){
-        launch(args);
-    }
 
+public class BookStore extends Application{
+    
+    private ArrayList<String> cartItems;
+    private ArrayList<Book> bookList;
+    
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception{
+        primaryStage.setTitle("Book Store");
         
-        Pane pane = new Pane();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BookStore.fxml"));
         
-        createMenuBar(pane);
+        //Load the FXML for the store scene
+        Parent root = loader.load();
         
-        Scene scene = new Scene(pane,500,500);
+        BookStoreController appCtrl = loader.getController();
+        
+        appCtrl.getBookList();
+        appCtrl.createStoreLayout();
+        
+        Scene scene = new Scene(root,800,600);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
     
-    private void createMenuBar(Pane pane){
-        MenuBar menuBar = new MenuBar();
+    private void addToCart(String title, String price){
         
-        Menu menuFile = new Menu("File");
-        MenuItem exitItem = new MenuItem("Exit");
-        menuFile.getItems().add(exitItem);
-        
-        Menu menuHelp = new Menu("Help");
-        MenuItem aboutItem = new MenuItem("About");
-        
-        exitItem.setOnAction((ActionEvent t) -> {
-            System.exit(0);
-        });
-        
-        aboutItem.setOnAction((ActionEvent t) -> {
-            VBox aboutVBox = new VBox();
-            Label nameLbl = new Label("BookStore");
-            Label versLbl = new Label("1.0.1");
-            Label descLbl = new Label("This application "
-                    + "is the BookStore for CameronJustice "
-                    + "Inc.");
-            //TODO: Add Icon
-            aboutVBox.getChildren().addAll(nameLbl,versLbl,descLbl);
-            Scene aboutScene = new Scene(aboutVBox, 100,100);
-            Stage aboutStage = new Stage();
-            aboutStage.setScene(aboutScene);
-            aboutStage.show();
-        });
-        
-        menuHelp.getItems().add(aboutItem);
-        
-        menuBar.getMenus().addAll(menuFile,menuHelp);
-        
-        pane.getChildren().add(menuBar);
     }
     
+    public static void main(String[] args){
+        launch();
+    }
 }

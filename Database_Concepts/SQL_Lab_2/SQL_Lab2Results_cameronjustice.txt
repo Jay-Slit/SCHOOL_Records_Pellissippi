@@ -1,0 +1,455 @@
+SQL> select sysdate from dual;
+
+SYSDATE 
+---------
+10-APR-17
+
+SQL> set echo on
+SQL> set define off
+SQL> -- Cameron Justice
+SQL> -- SQL Lab 2 Textbook Practice Commands
+SQL> -- CITC 1303
+SQL> -- #7 p. 256-257
+SQL> SELECT * FROM PRODUCT;
+
+P_CODE              P_DESCRIPT                          P_INDATE       P_QOH      P_MIN    P_PRICE P_DISCOUNT     V_CODE
+------------------- ----------------------------------- --------- ---------- ---------- ---------- ---------- ----------
+14-Q1/L3            9.00-in., pwr. saw                  13-NOV-13         18         12      17.49          0      21344
+1546-QQ2            Hrd. cloth, 1/4-in., 2x50           15-JAN-14         15          8      39.92          0      23119
+1558-QW1            Hrd. cloth, 1/2-in., 3x50           15-JAN-14         23          5      43.99          0      23119
+2232/QTY            B&D jigsaw, 12-in. blade            30-DEC-13          8          5     109.92        .05      24288
+2232/QWE            B&D jigsaw, 8-in. blade             24-DEC-13          6          5      99.87        .05      24288
+2238/QPD            B&D cordless drill, 1/2-in.         20-JAN-14         12          5      38.95        .05      25595
+23109-HB            Claw hammer                         20-JAN-14         23         10       9.95         .1      21225
+23114-AA            Sledge hammer, 12 lb.               02-JAN-14          8          5       14.4        .05           
+54778-2T            Rat-tail file, 1/8-in. fine         15-DEC-13         43         20       4.99          0      21344
+89-WRE-Q            Hicut chain saw, 16 in.             07-FEB-14         11          5     256.99        .05      24288
+PVC23DRT            PVC pipe,3.5-in., 8-ft.             20-FEB-14        188         75       5.87          0           
+
+P_CODE              P_DESCRIPT                          P_INDATE       P_QOH      P_MIN    P_PRICE P_DISCOUNT     V_CODE
+------------------- ----------------------------------- --------- ---------- ---------- ---------- ---------- ----------
+SM-18277            1.25-in. metal screw, 25            01-MAR-14        172         75       6.99          0      21225
+SW-23116            2.5-in. wd. screw, 50               24-FEB-14        237        100       8.45          0      21231
+WR3/TT3             Steel matting, 4'x8'x1/6", .5" mesh 17-JAN-14         18          5     119.95         .1      25595
+11QER/31            Power painter, 15 psi., 3-nozzle    03-NOV-13          8          5     109.99          0      25595
+13-Q2/P2            7.25-in. pwr. saw blade             13-DEC-13         32         15      14.99        .05      21344
+
+ 16 rows selected 
+
+SQL> SELECT P_CODE,P_DESCRIPT,P_INDATE,P_QOH,P_MIN,P_PRICE,P_DISCOUNT,V_CODE
+  FROM PRODUCT;
+
+P_CODE              P_DESCRIPT                          P_INDATE       P_QOH      P_MIN    P_PRICE P_DISCOUNT     V_CODE
+------------------- ----------------------------------- --------- ---------- ---------- ---------- ---------- ----------
+14-Q1/L3            9.00-in., pwr. saw                  13-NOV-13         18         12      17.49          0      21344
+1546-QQ2            Hrd. cloth, 1/4-in., 2x50           15-JAN-14         15          8      39.92          0      23119
+1558-QW1            Hrd. cloth, 1/2-in., 3x50           15-JAN-14         23          5      43.99          0      23119
+2232/QTY            B&D jigsaw, 12-in. blade            30-DEC-13          8          5     109.92        .05      24288
+2232/QWE            B&D jigsaw, 8-in. blade             24-DEC-13          6          5      99.87        .05      24288
+2238/QPD            B&D cordless drill, 1/2-in.         20-JAN-14         12          5      38.95        .05      25595
+23109-HB            Claw hammer                         20-JAN-14         23         10       9.95         .1      21225
+23114-AA            Sledge hammer, 12 lb.               02-JAN-14          8          5       14.4        .05           
+54778-2T            Rat-tail file, 1/8-in. fine         15-DEC-13         43         20       4.99          0      21344
+89-WRE-Q            Hicut chain saw, 16 in.             07-FEB-14         11          5     256.99        .05      24288
+PVC23DRT            PVC pipe,3.5-in., 8-ft.             20-FEB-14        188         75       5.87          0           
+
+P_CODE              P_DESCRIPT                          P_INDATE       P_QOH      P_MIN    P_PRICE P_DISCOUNT     V_CODE
+------------------- ----------------------------------- --------- ---------- ---------- ---------- ---------- ----------
+SM-18277            1.25-in. metal screw, 25            01-MAR-14        172         75       6.99          0      21225
+SW-23116            2.5-in. wd. screw, 50               24-FEB-14        237        100       8.45          0      21231
+WR3/TT3             Steel matting, 4'x8'x1/6", .5" mesh 17-JAN-14         18          5     119.95         .1      25595
+11QER/31            Power painter, 15 psi., 3-nozzle    03-NOV-13          8          5     109.99          0      25595
+13-Q2/P2            7.25-in. pwr. saw blade             13-DEC-13         32         15      14.99        .05      21344
+
+ 16 rows selected 
+
+SQL> -- #8 p. 260 - 270
+SQL> SELECT P_DESCRIPT,P_INDATE,P_PRICE,V_CODE 
+  FROM PRODUCT
+  WHERE V_CODE = 21344;
+
+P_DESCRIPT                          P_INDATE     P_PRICE     V_CODE
+----------------------------------- --------- ---------- ----------
+9.00-in., pwr. saw                  13-NOV-13      17.49      21344
+Rat-tail file, 1/8-in. fine         15-DEC-13       4.99      21344
+7.25-in. pwr. saw blade             13-DEC-13      14.99      21344
+
+SQL> SELECT P_DESCRIPT, P_INDATE, P_PRICE, V_CODE
+  FROM PRODUCT
+  WHERE V_CODE != 21344;
+
+P_DESCRIPT                          P_INDATE     P_PRICE     V_CODE
+----------------------------------- --------- ---------- ----------
+Hrd. cloth, 1/4-in., 2x50           15-JAN-14      39.92      23119
+Hrd. cloth, 1/2-in., 3x50           15-JAN-14      43.99      23119
+B&D jigsaw, 12-in. blade            30-DEC-13     109.92      24288
+B&D jigsaw, 8-in. blade             24-DEC-13      99.87      24288
+B&D cordless drill, 1/2-in.         20-JAN-14      38.95      25595
+Claw hammer                         20-JAN-14       9.95      21225
+Hicut chain saw, 16 in.             07-FEB-14     256.99      24288
+1.25-in. metal screw, 25            01-MAR-14       6.99      21225
+2.5-in. wd. screw, 50               24-FEB-14       8.45      21231
+Steel matting, 4'x8'x1/6", .5" mesh 17-JAN-14     119.95      25595
+Power painter, 15 psi., 3-nozzle    03-NOV-13     109.99      25595
+
+ 11 rows selected 
+
+SQL> SELECT P_DESCRIPT, P_QOH,P_MIN,P_PRICE
+  FROM PRODUCT
+  WHERE P_PRICE <= 10;
+
+P_DESCRIPT                               P_QOH      P_MIN    P_PRICE
+----------------------------------- ---------- ---------- ----------
+Claw hammer                                 23         10       9.95
+Rat-tail file, 1/8-in. fine                 43         20       4.99
+PVC pipe,3.5-in., 8-ft.                    188         75       5.87
+1.25-in. metal screw, 25                   172         75       6.99
+2.5-in. wd. screw, 50                      237        100       8.45
+
+SQL> SELECT P_CODE, P_DESCRIPT,P_QOH,P_MIN,P_PRICE
+  FROM PRODUCT
+  WHERE P_CODE < '1558-QW1';
+
+P_CODE              P_DESCRIPT                               P_QOH      P_MIN    P_PRICE
+------------------- ----------------------------------- ---------- ---------- ----------
+11QER/31            Power painter, 15 psi., 3-nozzle             8          5     109.99
+13-Q2/P2            7.25-in. pwr. saw blade                     32         15      14.99
+14-Q1/L3            9.00-in., pwr. saw                          18         12      17.49
+1546-QQ2            Hrd. cloth, 1/4-in., 2x50                   15          8      39.92
+
+SQL> SELECT P_DESCRIPT,P_QOH,P_MIN, P_PRICE, P_INDATE
+  FROM PRODUCT
+  WHERE P_INDATE >= '20-Jan-2014';
+
+P_DESCRIPT                               P_QOH      P_MIN    P_PRICE P_INDATE
+----------------------------------- ---------- ---------- ---------- ---------
+B&D cordless drill, 1/2-in.                 12          5      38.95 20-JAN-14
+Claw hammer                                 23         10       9.95 20-JAN-14
+Hicut chain saw, 16 in.                     11          5     256.99 07-FEB-14
+PVC pipe,3.5-in., 8-ft.                    188         75       5.87 20-FEB-14
+1.25-in. metal screw, 25                   172         75       6.99 01-MAR-14
+2.5-in. wd. screw, 50                      237        100       8.45 24-FEB-14
+
+ 6 rows selected 
+
+SQL> SELECT P_DESCRIPT,P_QOH,P_PRICE,P_QOH * P_PRICE
+  FROM PRODUCT;
+
+P_DESCRIPT                               P_QOH    P_PRICE                           P_QOH*P_PRICE
+----------------------------------- ---------- ---------- ---------------------------------------
+9.00-in., pwr. saw                          18      17.49                                  314.82
+Hrd. cloth, 1/4-in., 2x50                   15      39.92                                   598.8
+Hrd. cloth, 1/2-in., 3x50                   23      43.99                                 1011.77
+B&D jigsaw, 12-in. blade                     8     109.92                                  879.36
+B&D jigsaw, 8-in. blade                      6      99.87                                  599.22
+B&D cordless drill, 1/2-in.                 12      38.95                                   467.4
+Claw hammer                                 23       9.95                                  228.85
+Sledge hammer, 12 lb.                        8       14.4                                   115.2
+Rat-tail file, 1/8-in. fine                 43       4.99                                  214.57
+Hicut chain saw, 16 in.                     11     256.99                                 2826.89
+PVC pipe,3.5-in., 8-ft.                    188       5.87                                 1103.56
+
+P_DESCRIPT                               P_QOH    P_PRICE                           P_QOH*P_PRICE
+----------------------------------- ---------- ---------- ---------------------------------------
+1.25-in. metal screw, 25                   172       6.99                                 1202.28
+2.5-in. wd. screw, 50                      237       8.45                                 2002.65
+Steel matting, 4'x8'x1/6", .5" mesh         18     119.95                                  2159.1
+Power painter, 15 psi., 3-nozzle             8     109.99                                  879.92
+7.25-in. pwr. saw blade                     32      14.99                                  479.68
+
+ 16 rows selected 
+
+SQL> SELECT P_DESCRIPT,P_QOH,P_PRICE,P_PRICE,P_QOH * P_PRICE AS TOTALVALUE
+  FROM PRODUCT;
+
+P_DESCRIPT                               P_QOH    P_PRICE    P_PRICE TOTALVALUE
+----------------------------------- ---------- ---------- ---------- ----------
+9.00-in., pwr. saw                          18      17.49      17.49     314.82
+Hrd. cloth, 1/4-in., 2x50                   15      39.92      39.92      598.8
+Hrd. cloth, 1/2-in., 3x50                   23      43.99      43.99    1011.77
+B&D jigsaw, 12-in. blade                     8     109.92     109.92     879.36
+B&D jigsaw, 8-in. blade                      6      99.87      99.87     599.22
+B&D cordless drill, 1/2-in.                 12      38.95      38.95      467.4
+Claw hammer                                 23       9.95       9.95     228.85
+Sledge hammer, 12 lb.                        8       14.4       14.4      115.2
+Rat-tail file, 1/8-in. fine                 43       4.99       4.99     214.57
+Hicut chain saw, 16 in.                     11     256.99     256.99    2826.89
+PVC pipe,3.5-in., 8-ft.                    188       5.87       5.87    1103.56
+
+P_DESCRIPT                               P_QOH    P_PRICE    P_PRICE TOTALVALUE
+----------------------------------- ---------- ---------- ---------- ----------
+1.25-in. metal screw, 25                   172       6.99       6.99    1202.28
+2.5-in. wd. screw, 50                      237       8.45       8.45    2002.65
+Steel matting, 4'x8'x1/6", .5" mesh         18     119.95     119.95     2159.1
+Power painter, 15 psi., 3-nozzle             8     109.99     109.99     879.92
+7.25-in. pwr. saw blade                     32      14.99      14.99     479.68
+
+ 16 rows selected 
+
+SQL> SELECT P_CODE, P_INDATE, SYSDATE - 90 AS CUTDATE
+  FROM PRODUCT
+  WHERE P_INDATE <= SYSDATE - 90;
+
+P_CODE              P_INDATE  CUTDATE 
+------------------- --------- ---------
+14-Q1/L3            13-NOV-13 10-JAN-17
+1546-QQ2            15-JAN-14 10-JAN-17
+1558-QW1            15-JAN-14 10-JAN-17
+2232/QTY            30-DEC-13 10-JAN-17
+2232/QWE            24-DEC-13 10-JAN-17
+2238/QPD            20-JAN-14 10-JAN-17
+23109-HB            20-JAN-14 10-JAN-17
+23114-AA            02-JAN-14 10-JAN-17
+54778-2T            15-DEC-13 10-JAN-17
+89-WRE-Q            07-FEB-14 10-JAN-17
+PVC23DRT            20-FEB-14 10-JAN-17
+
+P_CODE              P_INDATE  CUTDATE 
+------------------- --------- ---------
+SM-18277            01-MAR-14 10-JAN-17
+SW-23116            24-FEB-14 10-JAN-17
+WR3/TT3             17-JAN-14 10-JAN-17
+11QER/31            03-NOV-13 10-JAN-17
+13-Q2/P2            13-DEC-13 10-JAN-17
+
+ 16 rows selected 
+
+SQL> SELECT P_CODE,P_INDATE,P_INDATE + 90 AS EXPDATE
+  FROM PRODUCT;
+P_CODE              P_INDATE  EXPDATE 
+------------------- --------- ---------
+14-Q1/L3            13-NOV-13 11-FEB-14
+1546-QQ2            15-JAN-14 15-APR-14
+1558-QW1            15-JAN-14 15-APR-14
+2232/QTY            30-DEC-13 30-MAR-14
+2232/QWE            24-DEC-13 24-MAR-14
+2238/QPD            20-JAN-14 20-APR-14
+23109-HB            20-JAN-14 20-APR-14
+23114-AA            02-JAN-14 02-APR-14
+54778-2T            15-DEC-13 15-MAR-14
+89-WRE-Q            07-FEB-14 08-MAY-14
+PVC23DRT            20-FEB-14 21-MAY-14
+
+P_CODE              P_INDATE  EXPDATE 
+------------------- --------- ---------
+SM-18277            01-MAR-14 30-MAY-14
+SW-23116            24-FEB-14 25-MAY-14
+WR3/TT3             17-JAN-14 17-APR-14
+11QER/31            03-NOV-13 01-FEB-14
+13-Q2/P2            13-DEC-13 13-MAR-14
+
+ 16 rows selected 
+
+SQL> SELECT P_DESCRIPT, P_INDATE, P_PRICE, V_CODE
+  FROM PRODUCT
+  WHERE V_CODE = 21344 OR V_CODE = 24288;
+
+P_DESCRIPT                          P_INDATE     P_PRICE     V_CODE
+----------------------------------- --------- ---------- ----------
+9.00-in., pwr. saw                  13-NOV-13      17.49      21344
+B&D jigsaw, 12-in. blade            30-DEC-13     109.92      24288
+B&D jigsaw, 8-in. blade             24-DEC-13      99.87      24288
+Rat-tail file, 1/8-in. fine         15-DEC-13       4.99      21344
+Hicut chain saw, 16 in.             07-FEB-14     256.99      24288
+7.25-in. pwr. saw blade             13-DEC-13      14.99      21344
+
+ 6 rows selected 
+
+SQL> SELECT P_DESCRIPT, P_INDATE, P_PRICE, V_CODE
+  FROM PRODUCT
+  WHERE P_PRICE < 50
+  AND P_INDATE > '15-Jan-2014';
+
+P_DESCRIPT                          P_INDATE     P_PRICE     V_CODE
+----------------------------------- --------- ---------- ----------
+B&D cordless drill, 1/2-in.         20-JAN-14      38.95      25595
+Claw hammer                         20-JAN-14       9.95      21225
+PVC pipe,3.5-in., 8-ft.             20-FEB-14       5.87           
+1.25-in. metal screw, 25            01-MAR-14       6.99      21225
+2.5-in. wd. screw, 50               24-FEB-14       8.45      21231
+
+SQL> SELECT P_DESCRIPT, P_INDATE, P_PRICE, V_CODE
+  FROM PRODUCT
+  WHERE (P_PRICE < 50 AND P_INDATE > '15-Jan-2014')
+  OR V_CODE = 24288;
+
+P_DESCRIPT                          P_INDATE     P_PRICE     V_CODE
+----------------------------------- --------- ---------- ----------
+B&D jigsaw, 12-in. blade            30-DEC-13     109.92      24288
+B&D jigsaw, 8-in. blade             24-DEC-13      99.87      24288
+B&D cordless drill, 1/2-in.         20-JAN-14      38.95      25595
+Claw hammer                         20-JAN-14       9.95      21225
+Hicut chain saw, 16 in.             07-FEB-14     256.99      24288
+PVC pipe,3.5-in., 8-ft.             20-FEB-14       5.87           
+1.25-in. metal screw, 25            01-MAR-14       6.99      21225
+2.5-in. wd. screw, 50               24-FEB-14       8.45      21231
+
+ 8 rows selected 
+
+SQL> SELECT *
+  FROM PRODUCT
+  WHERE NOT(V_CODE = 21344);
+
+P_CODE              P_DESCRIPT                          P_INDATE       P_QOH      P_MIN    P_PRICE P_DISCOUNT     V_CODE
+------------------- ----------------------------------- --------- ---------- ---------- ---------- ---------- ----------
+1546-QQ2            Hrd. cloth, 1/4-in., 2x50           15-JAN-14         15          8      39.92          0      23119
+1558-QW1            Hrd. cloth, 1/2-in., 3x50           15-JAN-14         23          5      43.99          0      23119
+2232/QTY            B&D jigsaw, 12-in. blade            30-DEC-13          8          5     109.92        .05      24288
+2232/QWE            B&D jigsaw, 8-in. blade             24-DEC-13          6          5      99.87        .05      24288
+2238/QPD            B&D cordless drill, 1/2-in.         20-JAN-14         12          5      38.95        .05      25595
+23109-HB            Claw hammer                         20-JAN-14         23         10       9.95         .1      21225
+89-WRE-Q            Hicut chain saw, 16 in.             07-FEB-14         11          5     256.99        .05      24288
+SM-18277            1.25-in. metal screw, 25            01-MAR-14        172         75       6.99          0      21225
+SW-23116            2.5-in. wd. screw, 50               24-FEB-14        237        100       8.45          0      21231
+WR3/TT3             Steel matting, 4'x8'x1/6", .5" mesh 17-JAN-14         18          5     119.95         .1      25595
+11QER/31            Power painter, 15 psi., 3-nozzle    03-NOV-13          8          5     109.99          0      25595
+
+ 11 rows selected 
+
+SQL> SELECT *
+  FROM PRODUCT
+  WHERE P_PRICE BETWEEN 50.00 AND 100.00;
+
+P_CODE              P_DESCRIPT                          P_INDATE       P_QOH      P_MIN    P_PRICE P_DISCOUNT     V_CODE
+------------------- ----------------------------------- --------- ---------- ---------- ---------- ---------- ----------
+2232/QWE            B&D jigsaw, 8-in. blade             24-DEC-13          6          5      99.87        .05      24288
+
+SQL> SELECT P_CODE,P_DESCRIPT,V_CODE
+  FROM PRODUCT
+  WHERE V_CODE IS NULL;
+
+P_CODE              P_DESCRIPT                              V_CODE
+------------------- ----------------------------------- ----------
+23114-AA            Sledge hammer, 12 lb.                         
+PVC23DRT            PVC pipe,3.5-in., 8-ft.                       
+
+SQL> SELECT P_CODE,P_DESCRIPT,P_INDATE
+  FROM PRODUCT
+  WHERE P_INDATE IS NULL;
+
+no rows selected
+
+
+SQL> SELECT V_NAME,V_CONTACT,V_AREACODE,V_PHONE
+  FROM VENDOR
+  WHERE V_CONTACT LIKE 'Smith%';
+
+V_NAME                              V_CONTACT       V_A V_PHONE
+----------------------------------- --------------- --- --------
+Bryson, Inc.                        Smithson        615 223-3234
+Dome Supply                         Smith           901 678-1419
+B&K, Inc.                           Smith           904 227-0093
+
+SQL> SELECT V_NAME, V_CONTACT,V_AREACODE,V_PHONE
+  FROM VENDOR
+  WHERE V_CONTACT LIKE 'SMITH%';
+
+no rows selected
+
+
+SQL> SELECT V_NAME,V_CONTACT,V_AREACODE,V_PHONE
+  FROM VENDOR
+  WHERE UPPER(V_CONTACT) LIKE 'SMITH%';
+
+V_NAME                              V_CONTACT       V_A V_PHONE
+----------------------------------- --------------- --- --------
+Bryson, Inc.                        Smithson        615 223-3234
+Dome Supply                         Smith           901 678-1419
+B&K, Inc.                           Smith           904 227-0093
+
+SQL> SELECT V_NAME,V_CONTACT,V_AREACODE,V_PHONE
+  FROM VENDOR
+  WHERE V_CONTACT NOT LIKE 'Smith%';
+
+V_NAME                              V_CONTACT       V_A V_PHONE
+----------------------------------- --------------- --- --------
+Superloo, Inc.                      Flushing        904 215-8995
+D&E Supply                          Singh           615 228-3245
+Gomez Bros.                         Ortega          615 889-2546
+Randsets Ltd.                       Anderson        90  678-3996
+Brackman Bros.                      Browning        615 228-1410
+ORDVA, Inc.                         Hakford         615 898-1234
+Damal Supplies                      Smythe          615 890-3529
+Rubicon Systems                     Orton           904 456-0092
+
+ 8 rows selected 
+
+SQL> SELECT * 
+  FROM VENDOR
+  WHERE V_CONTACT LIKE 'Johns_n';
+
+no rows selected
+
+
+SQL> SELECT *
+  FROM PRODUCT
+  WHERE V_CODE IN (21344, 24288);
+
+P_CODE              P_DESCRIPT                          P_INDATE       P_QOH      P_MIN    P_PRICE P_DISCOUNT     V_CODE
+------------------- ----------------------------------- --------- ---------- ---------- ---------- ---------- ----------
+14-Q1/L3            9.00-in., pwr. saw                  13-NOV-13         18         12      17.49          0      21344
+2232/QTY            B&D jigsaw, 12-in. blade            30-DEC-13          8          5     109.92        .05      24288
+2232/QWE            B&D jigsaw, 8-in. blade             24-DEC-13          6          5      99.87        .05      24288
+54778-2T            Rat-tail file, 1/8-in. fine         15-DEC-13         43         20       4.99          0      21344
+89-WRE-Q            Hicut chain saw, 16 in.             07-FEB-14         11          5     256.99        .05      24288
+13-Q2/P2            7.25-in. pwr. saw blade             13-DEC-13         32         15      14.99        .05      21344
+
+ 6 rows selected 
+
+SQL> SELECT *
+  FROM PRODUCT
+  WHERE V_CODE IN ('21344','24288');
+
+P_CODE              P_DESCRIPT                          P_INDATE       P_QOH      P_MIN    P_PRICE P_DISCOUNT     V_CODE
+------------------- ----------------------------------- --------- ---------- ---------- ---------- ---------- ----------
+14-Q1/L3            9.00-in., pwr. saw                  13-NOV-13         18         12      17.49          0      21344
+2232/QTY            B&D jigsaw, 12-in. blade            30-DEC-13          8          5     109.92        .05      24288
+2232/QWE            B&D jigsaw, 8-in. blade             24-DEC-13          6          5      99.87        .05      24288
+54778-2T            Rat-tail file, 1/8-in. fine         15-DEC-13         43         20       4.99          0      21344
+89-WRE-Q            Hicut chain saw, 16 in.             07-FEB-14         11          5     256.99        .05      24288
+13-Q2/P2            7.25-in. pwr. saw blade             13-DEC-13         32         15      14.99        .05      21344
+
+ 6 rows selected 
+
+SQL> SELECT V_CODE, V_NAME
+  FROM VENDOR
+  WHERE V_CODE IN(SELECT V_CODE FROM PRODUCT);
+
+    V_CODE V_NAME                            
+---------- -----------------------------------
+     21225 Bryson, Inc.                       
+     21231 D&E Supply                         
+     21344 Gomez Bros.                        
+     23119 Randsets Ltd.                      
+     24288 ORDVA, Inc.                        
+     25595 Rubicon Systems                    
+
+ 6 rows selected 
+
+SQL> SELECT *
+  FROM VENDOR
+  WHERE EXISTS(SELECT * FROM PRODUCT WHERE P_QOH <= P_MIN);
+
+no rows selected
+
+
+SQL> SELECT *
+  FROM VENDOR
+  WHERE EXISTS(SELECT * FROM PRODUCT WHERE P_QOH < P_MIN * 2);
+
+    V_CODE V_NAME                              V_CONTACT       V_A V_PHONE  V_ V
+---------- ----------------------------------- --------------- --- -------- -- -
+     21225 Bryson, Inc.                        Smithson        615 223-3234 TN Y
+     21226 Superloo, Inc.                      Flushing        904 215-8995 FL N
+     21231 D&E Supply                          Singh           615 228-3245 TN Y
+     21344 Gomez Bros.                         Ortega          615 889-2546 KY N
+     22567 Dome Supply                         Smith           901 678-1419 GA N
+     23119 Randsets Ltd.                       Anderson        90  678-3996 GA Y
+     24004 Brackman Bros.                      Browning        615 228-1410 TN N
+     24288 ORDVA, Inc.                         Hakford         615 898-1234 TN Y
+     25443 B&K, Inc.                           Smith           904 227-0093 FL N
+     25501 Damal Supplies                      Smythe          615 890-3529 TN N
+     25595 Rubicon Systems                     Orton           904 456-0092 FL Y
+
+ 11 rows selected 
+
